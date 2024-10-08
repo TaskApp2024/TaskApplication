@@ -54,7 +54,7 @@ const SignupForm = () => {
     setIsLoading(true); // Start loading
 
     try {
-      const response = await axios.post('http://localhost:3001/api/companySignup', formData, {
+      const response = await axios.post('http://16.171.229.175:3001/api/companySignup', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

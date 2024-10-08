@@ -22,7 +22,7 @@ const DashboardHome = () => {
       setRole(userRole);
       
       try {
-        const response = await axios.get('http://localhost:3001/api/dashboard-data', {
+        const response = await axios.get('http://16.171.229.175:3001/api/dashboard-data', {
           params: { companyId }
         });
         setDashboardData(response.data);

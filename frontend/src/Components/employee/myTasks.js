@@ -20,7 +20,7 @@ const MyTasks = () => {
     const fetchMyTasks = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/myTasks/${empId}`
+          `http://16.171.229.175:3001/api/myTasks/${empId}`
         );
         setTasks(response.data);
         setFilteredTasks(response.data);
@@ -57,7 +57,7 @@ const MyTasks = () => {
       const taskToUpdate = tasks.find((task) => task._id === taskId);
       const updatedTask = { ...taskToUpdate, status: status[taskId] };
 
-      await axios.put(`http://localhost:3001/api/tasks/${taskId}`, updatedTask);
+      await axios.put(`http://16.171.229.175:3001/api/tasks/${taskId}`, updatedTask);
 
       setTasks(
         tasks.map((task) => (task._id === taskId ? updatedTask : task))

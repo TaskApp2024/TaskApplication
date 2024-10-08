@@ -60,7 +60,7 @@ const AddModal = () => {
             }}
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting }) => {
-              axios.post('http://localhost:3001/api/addEmployee', values)
+              axios.post('http://16.171.229.175:3001/api/addEmployee', values)
                 .then(response => {
                   console.log(response.data);
                   setSubmitting(false);

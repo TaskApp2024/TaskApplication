@@ -22,7 +22,7 @@ const VerifyEmail = () => {
       }
 
       try {                               
-        const response = await axios.get(`http://localhost:3001/api/verify-email?token=${token}`);
+        const response = await axios.get(`http://16.171.229.175:3001/api/verify-email?token=${token}`);
         
         if (response.data.success) {
           setSuccessMessage('Email verified successfully! Redirecting to login');

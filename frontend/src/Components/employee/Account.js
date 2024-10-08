@@ -17,7 +17,7 @@ const UserProfile = () => {
   useEffect(() => {
     const empId = localStorage.getItem('employeeId');
     
-    axios.get(`http://localhost:3001/api/users/${empId}`)
+    axios.get(`http://16.171.229.175:3001/api/users/${empId}`)
       .then(response => {
         setUserData(response.data);
       })
@@ -38,7 +38,7 @@ const UserProfile = () => {
     e.preventDefault();
     const empId = localStorage.getItem('employeeId');
     
-    axios.put(`http://localhost:3001/api/users/${empId}`, userData)
+    axios.put(`http://16.171.229.175:3001/api/users/${empId}`, userData)
       .then(response => {
         setShowModal(true); // Show the modal after a successful update
       })

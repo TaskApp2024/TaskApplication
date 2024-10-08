@@ -20,7 +20,7 @@ const Tasks = () => {
         const empId = localStorage.getItem('empId');
         const role = localStorage.getItem('role');
         try {
-            const response = await axios.get('http://localhost:3001/api/tasks', {
+            const response = await axios.get('http://16.171.229.175:3001/api/tasks', {
                 params: {
                     companyId: storedCompanyId,
                     role: role,
@@ -108,7 +108,7 @@ const Tasks = () => {
 
     const handleDeleteConfirm = async () => {
         try {
-            await axios.delete(`http://localhost:3001/api/removeTask/${taskToDelete._id}`);
+            await axios.delete(`http://16.171.229.175:3001/api/removeTask/${taskToDelete._id}`);
             setTasks(tasks.filter(task => task._id !== taskToDelete._id));
             setFilteredTasks(filteredTasks.filter(task => task._id !== taskToDelete._id));
             setTaskToDelete(null);

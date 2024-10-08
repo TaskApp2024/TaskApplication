@@ -63,7 +63,7 @@ const CompanyProfile = () => {
     }
 
     try {
-      await axios.put(`http://localhost:3001/api/company/${companyId}`, formData, {
+      await axios.put(`http://16.171.229.175:3001/api/company/${companyId}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

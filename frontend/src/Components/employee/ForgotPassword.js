@@ -10,7 +10,7 @@ const ForgotPassword=()=>{
 
         try {
             
-            const response = await axios.post('http://localhost:3001/api/forgot-password', { email });
+            const response = await axios.post('http://16.171.229.175:3001/api/forgot-password', { email });
             setMessage(response.data.message);
         } catch (error) {
             setMessage('Error sending password reset email');

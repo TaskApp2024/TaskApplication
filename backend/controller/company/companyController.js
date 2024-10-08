@@ -420,13 +420,15 @@ const deleteEmployee=async(req,res)=>{
 const displayEmployees = async (req, res) => {
   console.log("Displaying Employees");
   const { companyId, role } = req.query;
-
+  console.log(role);
+  console.log(typeof role);
   try {
     if (role === "company") {
+      console.log("Running start");
       const employees = await Employee.find({ companyId: companyId });
 
       if (employees.length === 0) {
-        return res.status(404).json({ message: 'No Employees Found' });
+        return res.status(200).json({ message: 'No Employees Found' });
       }
 
       return res.status(200).json(employees);
@@ -523,10 +525,17 @@ const addTask = async (req, res) => {
 
 
 
-const displayTasks=async(req,res)=>{
+const displayTasks = async (req, res) => {
   console.log("Displaying tasks");
-  const { companyId,role,empId } = req.query;
-  try{
+
+  const { companyId, role, empId } = req.query;
+
+  // Initial validation
+  if (!companyId || !role) {
+    return res.status(400).json({ message: "Missing required parameters" });
+  }
+
+  try {
     let tasks;
 
     if (role === "company") {
@@ -545,15 +554,17 @@ const displayTasks=async(req,res)=>{
       return res.status(403).json({ message: "Access denied" });
     }
 
-    if(tasks===0){
-      res.status(404).json({message: 'No Tasks Found'});
+    // Check if tasks array is empty
+    if (tasks.length === 0) {
+      return res.status(200).json({ message: 'No Tasks Found' });
     }
+
     res.json(tasks);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-  catch(err){
-    res.status(500).json({message:err.message});
-  }
-}
+};
+
 
 
 const updateTask=async(req,res)=>{
@@ -731,7 +742,7 @@ const displayProjects = async (req, res) => {
       const projects = await Project.find({ companyId });
 
       if (projects.length === 0) {
-        return res.status(404).json({ message: 'No Projects Found' });
+        return res.status(200).json({ message: 'No Projects Found' });
       }
 
       return res.status(200).json({ message: 'Projects found', projects });
