@@ -428,6 +428,7 @@ const displayEmployees = async (req, res) => {
       const employees = await Employee.find({ companyId: companyId });
 
       if (employees.length === 0) {
+        console.log("empty table -employess")
         return res.status(200).json({ message: 'Employees not Found' });
       }
 
